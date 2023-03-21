@@ -31,7 +31,7 @@ describe('Fazer login no portal de teste Ebac', () => {
         cy.get('#password').type('teste@teste.com')
         cy.get('.woocommerce-form > .button').click()
 
-        cy.get('.woocommerce-error > li > :nth-child(1)').should('','Erro')
+        cy.get('.woocommerce-error').should('contain','Erro')
        
     });
 
