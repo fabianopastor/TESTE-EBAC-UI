@@ -1,8 +1,17 @@
 ///<reference types="cypress"/>
 
 describe('Fazer login no portal de teste Ebac', () => {
-    it('Fazer login com sucesso', () => {
+
+    beforeEach(() => {
         cy.visit("http://lojaebac.ebaconline.art.br/")
+    }); 
+
+    afterEach(() => {
+        cy.screenshot()
+    });
+    
+
+    it('Fazer login com sucesso', () => {
         cy.get('.icon-user-unfollow').click()
         cy.get('#username').type('aluno_ebac@teste.com')
         cy.get('#password').type('teste@teste.com')
@@ -14,7 +23,6 @@ describe('Fazer login no portal de teste Ebac', () => {
     });
 
     it('Fazer login com senha invalido', () => {
-        cy.visit("http://lojaebac.ebaconline.art.br/")
         cy.get('.icon-user-unfollow').click()
         cy.get('#username').type('aluno_ebac@teste.com')
         cy.get('#password').type('!@#@teste.com')
@@ -25,7 +33,6 @@ describe('Fazer login no portal de teste Ebac', () => {
     });
 
     it('Fazer login com usuario invalido', () => {
-        cy.visit("http://lojaebac.ebaconline.art.br/")
         cy.get('.icon-user-unfollow').click()
         cy.get('#username').type('aluno_!@#@teste.com')
         cy.get('#password').type('teste@teste.com')
