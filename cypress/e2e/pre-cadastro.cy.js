@@ -8,9 +8,9 @@ describe('Funcionalidade Pre cadastro', () => {
         cy.visit("http://lojaebac.ebaconline.art.br/minha-conta/")
     }); 
 
-    afterEach(() => {
-        cy.screenshot()
-    });
+//    afterEach(() => {
+//        cy.screenshot()
+//    });
 
 
     it('Tentar Fazer um Pre cadastro com conta ja registrada', () => {
@@ -22,7 +22,7 @@ describe('Funcionalidade Pre cadastro', () => {
        
     });
     
-    it.only('Tentar Fazer um Pre cadastro com conta nao registrada', () => {
+    it('Tentar Fazer um Pre cadastro com conta nao registrada', () => {
 
         //funciona como uma VAR
         let emailFaker = faker.internet.email()
@@ -36,8 +36,20 @@ describe('Funcionalidade Pre cadastro', () => {
         cy.get('#account_last_name').type('Naomudar')
         cy.get('.woocommerce-Button').click()
         cy.get('.woocommerce-message').should('contain','Detalhes da conta modificados com sucesso.') 
-
-
        
     });
+
+    /*
+    it.only('Deve completar o pre-cadastro com sucesso, usando comando customizado', () => {
+       let emailFaker2 = faker.internet.email()
+
+       Cypress.preCadastro(emailFaker2, 'senha!@#forte', 'Fabiano', 'Duarte' ) 
+       cy.get('.woocommerce-message').should('contain','Detalhes da conta modificados com sucesso.') 
+        
+    });
+    */
+
+   
+
+
 }); 

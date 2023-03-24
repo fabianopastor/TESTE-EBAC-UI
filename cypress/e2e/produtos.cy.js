@@ -18,7 +18,7 @@ describe('Teste de ponta a ponta em SauceLabs', () => {
         
     });
 
-    it.only('Deve selecionar um produto ao carrinho', () => {
+    it('Deve selecionar um produto ao carrinho', () => {
         var qtde = 3
 
         cy.get('[class="product-block grid"]').eq(8).click() 
@@ -29,6 +29,12 @@ describe('Teste de ponta a ponta em SauceLabs', () => {
 
         cy.get('.dropdown-toggle > .mini-cart-items').should('contain',qtde)
         cy.get('.woocommerce-message').should('contain', qtde + ' × “Atlas Fitness Tank” foram adicionados no seu carrinho.')
+
+    });
+
+    it.only('Deve selecionar um produto ao carrinho pelo command', () => {
+               
+        cy.addProdutos('Ariel Roll Sleeve Sweatshirt','M','Black', 3)
 
     });
 
